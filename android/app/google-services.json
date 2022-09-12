@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "82033463418",
+    "firebase_url": "https://bookkaamwaali-cb84c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bookkaamwaali-cb84c",
+    "storage_bucket": "bookkaamwaali-cb84c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82033463418:android:323b137ea3f2ae9c046bc3",
+        "android_client_info": {
+          "package_name": "com.example.bookkaamwaali"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82033463418-p6hhu35tt6u5smf7oq7rstcbspdu6be5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookkaamwaali",
+            "certificate_hash": "38042b0ddb240e2cdbcf2073954e51bb070511cf"
+          }
+        },
+        {
+          "client_id": "82033463418-c9mv2mr84n04lrp7ki3s8dq5el867l3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ2r2DtijNeKG6uzdHlCupVBu-JyFW4hQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82033463418-c9mv2mr84n04lrp7ki3s8dq5el867l3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
