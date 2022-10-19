@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TextSpan(
                                       children: <InlineSpan>[
                                         WidgetSpan(
-                                            child: Icon(Icons.add_location, color: Colors.red, size: 23,)),
+                                            child: Icon(Icons.add_location, color: Colors.red, size: 24,)),
                                         TextSpan(text: 'Surakarta, INA'),
 
                                       ],
