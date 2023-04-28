@@ -34,15 +34,21 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  firebase_auth: ^3.6.1
-  firebase_core: ^1.20.0
-  splash_screen_view: ^3.0.0
+  firebase_auth: ^4.2.5
+  firebase_core: ^2.4.1
+  scrollable_positioned_list: ^0.3.5
+  flutter_credit_card: ^2.0.0
+  animated_text_kit: ^4.2.2
+  flutter_rating_stars: ^1.0.3+4
+
+
 
   #for validation of input field
   fluttertoast: ^8.0.9
+  regexed_validator: ^2.0.0+1
 
-  #for crud opearion
-  firebase_database: ^9.1.0
+  #for crud operation
+  firebase_database: ^10.0.9
 
   #for bottom bar
   salomon_bottom_bar: ^3.3.1
@@ -55,21 +61,32 @@ dependencies:
   #for drawer
   sidebarx: ^0.10.0
 
-  flutter_signin_button: ^2.0.0
+#  flutter_signin_button: ^2.0.0
   email_validator: ^2.1.17
   #for country code
-  intl_phone_number_input: ^0.7.0+2
+  intl_phone_number_input: ^0.7.1
 
   pin_code_text_field: ^1.8.0
 
   #Notifications
   awesome_notifications: ^0.6.21
 
+  #instagram project
+  gradient_borders: ^0.2.0
 
-  cloud_firestore: ^3.4.6
+  #phonenumberVerification
+  firebase_phone_auth_handler: ^1.0.7
+
+  shared_preferences: ^2.0.15
+  firebase_dynamic_links: ^5.0.6
+  flutter_easyloading: ^3.0.5
+  smooth_page_indicator: ^1.0.0+2
+  table_calendar: ^3.0.6
+  cloud_firestore: ^4.3.1
   get: ^4.6.5
   image_picker: ^0.8.5+3
-  firebase_storage: ^10.3.7
+  firebase_storage: ^11.0.6
+  font_awesome_flutter: ^10.3.0
   uuid: ^3.0.6
   dependencies:
 
@@ -130,32 +147,3 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-#splash_screen_view:
-#  # Use color to set the background of your splash screen to a solid color.
-#  # Use background_image to set the background of your splash screen to a png image.
-#  # This is useful for gradients. The image will be stretch to the  size of the app.
-#  # Only one parameter can be used, color and background_image cannot both be set.
-#
-#  color: "#40826D"
-##  background_image: "assets/images/faceproduct.png"
-#
-#  # Optional parameters are listed below.
-##  image: assets/images/faceproduct.png
-#
-#  color_dark: "#40826D"
-#  #background_image_dark: "assets/dark-background.png"
-#  #image_dark: assets/splash-invert.png
-#
-#  #android: false
-#  #ios: false
-#  #web: false
-#
-#  #android_gravity: center
-#  #ios_content_mode: center
-#  #web_image_mode: center
-#
-#  #fullscreen: true
-#
-#  #info_plist_files:
-#  #  - 'ios/Runner/Info-Debug.plist'
-#  #  - 'ios/Runner/Info-Release.plist'

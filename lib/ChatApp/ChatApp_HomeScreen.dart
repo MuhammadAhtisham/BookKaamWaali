@@ -1,6 +1,6 @@
 import 'package:bookkaamwaali/ChatApp/chat_room.dart';
 import 'package:bookkaamwaali/ChatApp/user_search.dart';
-import 'package:bookkaamwaali/register_login_screen/loginscreen.dart';
+import 'package:bookkaamwaali/register_login_screen/phone_signIn.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -102,13 +102,13 @@ class _ChatAppHomeState extends State<ChatAppHome> with WidgetsBindingObserver{
                     actions: [
                       TextButton(onPressed: (){
                         auth.signOut();
-                        Get.to( LoginScreen());
+                         Get.to(PhoneSignIn());
                       },
                       child: Text("yes"),),
                       TextButton(onPressed: (){
                         Get.back();
                       },
-                        child: Text("yes"),),
+                        child: Text("no"),),
                     ],
                   );
 
@@ -134,7 +134,7 @@ class _ChatAppHomeState extends State<ChatAppHome> with WidgetsBindingObserver{
                                itemCount: snapshot.data!.docs.length,
                                itemBuilder: (context, index)
                                {
-                                 Map<String, dynamic> userData= snapshot.data!.docs[index].data();
+                                 // Map<String, dynamic> userData= snapshot.data!.docs[index].data();
 
                                  return Card(
                                    child: ListTile(
@@ -177,4 +177,8 @@ class _ChatAppHomeState extends State<ChatAppHome> with WidgetsBindingObserver{
 ///WidgetsBindingObserver is used to get user status
 
 /// State Management is also a mini framework - provider//getX/blockC.
+
+
+
+
 

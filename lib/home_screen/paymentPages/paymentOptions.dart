@@ -1,0 +1,192 @@
+import 'package:bookkaamwaali/home_screen/calendarScreen.dart';
+import 'package:bookkaamwaali/home_screen/orders/OrderReceipt.dart';
+import 'package:bookkaamwaali/home_screen/paymentPages/paymentByCard.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/credit_card_widget.dart';
+
+class Select_Payment extends StatefulWidget {
+  String service, allServices, gender, frequency, price, year, month, day, hour, repeat, employeeKey;
+  int additionalPrice;
+  Select_Payment({Key? key, required this.service, required this.allServices, required this.gender, required this.frequency, required this.price, required this.additionalPrice,  required this.year, required this.month, required this.day, required this.hour, required this.repeat, required this.employeeKey}) : super(key: key);
+
+  @override
+  State<Select_Payment> createState() => _Select_PaymentState();
+}
+
+class _Select_PaymentState extends State<Select_Payment> {
+  @override
+  List<dynamic> _quantity =[
+    ['By cash', 'https://img.icons8.com/color/2x/cash-in-hand.png', Colors.red, 0],
+    ['By card', 'https://img.icons8.com/color/2x/bank-card-back-side.png', Colors.orange, 0],
+  ];
+  List<int> _selectedquantity = [];
+  late int selectedIndex = 0;
+  late String payOption;
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 20.0, top: 7),
+            child: IconButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              icon: Padding(
+                padding: const EdgeInsets.only(right: 20.0, top: 7),
+                child: Icon(Icons.arrow_back_ios_new_outlined,color: Colors.blueAccent,),
+              ),
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+        floatingActionButton: _selectedquantity.length > 0 ? FloatingActionButton(
+          onPressed: () {
+            if(payOption=="By card")
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCardPage(service: widget.service, allServices: widget.allServices, gender: widget.gender, frequency: widget.frequency, price: widget.price, additionalPrice: widget.additionalPrice, year: widget.year, month: widget.month, day: widget.day, hour: widget.hour , repeat: widget.repeat, employeeKey: widget.employeeKey.toString())),);
+            else
+              {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => OrderReceipt(service: widget.service, allServices: widget.allServices, gender: widget.gender, frequency: widget.frequency, price: widget.price, additionalPrice: widget.additionalPrice, year: widget.year, month: widget.month, day: widget.day, hour: widget.hour , repeat: widget.repeat, employeeKey: widget.employeeKey.toString())),);
+              }
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text('${_selectedquantity.length}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              // SizedBox(width: 2),
+              Icon(Icons.arrow_forward_ios, size: 18,),
+            ],
+          ),
+          backgroundColor: Colors.blue,
+        ) : null,
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 30.0, right: 20.0, left: 20.0, bottom: 15),
+                  child: Text(
+                    'How would you like to \npay?',
+                    style: TextStyle(
+                      fontSize: 35,
+                      color: Colors.grey.shade900,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ];
+          },
+          body: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: _quantity.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return frequency(_quantity[index], index);
+                }
+            ),
+          ),
+        )
+    );
+  }
+  frequency(List pairs, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex= index;
+
+          if (_selectedquantity.contains(index))
+          {
+            // _selectedquantity.remove(index);
+            _selectedquantity.clear();
+          }
+          else {
+            // _selectedquantity.remove(index-1);
+            _selectedquantity.clear();
+            _selectedquantity.add(index);
+          }
+        });
+        if(selectedIndex==index && _selectedquantity.length > 0){
+          print(pairs[1]);
+          payOption = pairs[0];
+
+        }
+      },
+      child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          margin: EdgeInsets.only(bottom: 20.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: selectedIndex==index && _selectedquantity.length > 0 ? pairs[2].shade50.withOpacity(0.5) : Colors.grey.shade100,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Image.network(pairs[1], width: 35, height: 35,),
+                      SizedBox(width: 10.0,),
+                      Text(pairs[0], style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
+                    ],
+                  ),
+                  Spacer(),
+                  selectedIndex==index && _selectedquantity.length > 0 ?
+                  Container(
+                      padding: EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                        color: Colors.greenAccent.shade100.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Icon(Icons.check, color: Colors.green, size: 20,)
+                  ) :
+                  SizedBox()
+                ],
+              ),
+              (_selectedquantity.contains(index) && pairs[3] >= 1) ?
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20.0,),
+                    Text("How many ${pairs[0]}s?", style: TextStyle(fontSize: 15),),
+                    SizedBox(height: 10.0,),
+                    Container(
+                      height: 45,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 4,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  pairs[3] = index + 1;
+                                });
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10.0),
+                                padding: EdgeInsets.all(10.0),
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: pairs[3] == index + 1 ? pairs[2].withOpacity(0.5) : pairs[2].shade200.withOpacity(0.5),
+                                ),
+                                child: Center(child: Text((index + 1).toString() , style: TextStyle(fontSize: 22, color: Colors.white),)),
+                              ),
+                            );
+                          }
+                      ),
+                    )
+                  ],
+                ),
+              ) : SizedBox()
+            ],
+          )
+      ),
+    );
+  }
+}

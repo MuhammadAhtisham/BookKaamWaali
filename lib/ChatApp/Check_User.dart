@@ -1,5 +1,5 @@
 import 'package:bookkaamwaali/ChatApp/ChatApp_HomeScreen.dart';
-import 'package:bookkaamwaali/register_login_screen/loginscreen.dart';
+import 'package:bookkaamwaali/register_login_screen/phone_signIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class CheckUserScreen extends StatelessWidget {
@@ -13,7 +13,7 @@ class CheckUserScreen extends StatelessWidget {
         return ChatAppHome();
       }
     else{
-      return LoginScreen();
+      return PhoneSignIn();
     }
   }
 }
